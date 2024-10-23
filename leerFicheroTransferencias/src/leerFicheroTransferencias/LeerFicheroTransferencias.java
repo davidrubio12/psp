@@ -1,11 +1,11 @@
 package leerFicheroTransferencias;
 
 
-import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Scanner;
@@ -32,7 +32,7 @@ public class LeerFicheroTransferencias {
 		
 		File file = new File("D:\\DA2D1E\\generacionFicheroTransferencia\\bin");
 		
-		ProcessBuilder pb = new ProcessBuilder("java" , "generacionFicheroTransferencia.GeneracionFicheroTransferencia" );
+		ProcessBuilder pb = new ProcessBuilder("java","generacionFicheroTransferencia.GeneracionFicheroTransferencia" );
 		
 		pb.directory(file);
 		
@@ -46,32 +46,17 @@ public class LeerFicheroTransferencias {
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os));
 			
 			writer.write(path);
-			writer.newLine();
+			 writer.newLine();
 			writer.write(nombre);
-			writer.newLine();
+			 writer.newLine();
 			writer.write(Integer.toString(num));
-			writer.newLine();
+			 writer.newLine();
 			writer.flush();
 			writer.close();
 			
 			int ev = p.waitFor();
-			  // Capturamos la salida estándar del proceso
-            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            String line;
-            System.out.println("Salida del proceso:");
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
+		
 
-            // Capturamos la salida de error del proceso
-            BufferedReader errorReader = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-            String errorLine;
-            System.out.println("Errores del proceso:");
-            while ((errorLine = errorReader.readLine()) != null) {
-                System.out.println(errorLine);
-            }
-			  
-			
 			
 			switch (ev) {
 			case -2:

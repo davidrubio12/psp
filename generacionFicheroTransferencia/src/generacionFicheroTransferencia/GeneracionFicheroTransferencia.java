@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class GeneracionFicheroTransferencia {
 
 	public static void main(String[] args) throws InterruptedException {
-		Scanner sc = new Scanner(System.in);
-		int num = 31 ;//(int) (Math.random() * 100) + 1;
+		
+		int num =(int) (Math.random() * 100) + 1;
 
 		if (num < 30) {
 
@@ -20,25 +20,17 @@ public class GeneracionFicheroTransferencia {
 
 		} else {
 
-			File path = new File("D:\\DA2D1E\\leerFicheroTransferencias\\bin");
+	 try {
 
-			ProcessBuilder pb1 = new ProcessBuilder("java", "leerFicheroTransferencias.LeerFicheroTransferencias");
-
-			pb1.directory(path);
-
-			try {
-
-				Process p1 = pb1.start();
-
-				InputStream is = p1.getInputStream();
-
-				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+				BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 				String pathFichero = reader.readLine();
 
 				String nombreFichero = reader.readLine();
 
 				int numeroTransferencias = Integer.parseInt(reader.readLine());
+				
+				
 				
 				System.out.println("Datos recibidos:");
 	            System.out.println("Path: " + pathFichero);
@@ -51,7 +43,7 @@ public class GeneracionFicheroTransferencia {
 
 				for (int i = 0; i < numeroTransferencias; i++) {
 
-					int primerDigito = (int) ((Math.random() + 1) * 2);
+					int primerDigito = (int) (1 +(Math.random()) * 2);
 
 					primerDigito = primerDigito * 100000000;
 
@@ -59,9 +51,9 @@ public class GeneracionFicheroTransferencia {
 
 					int digitoEntero = primerDigito + restantes;
 
-					int importeNomina = (int) (Math.random() + 1500 * (3000 - 1500));
-
-					importeNomina = Math.round(importeNomina * 100) / 100;
+					double importeNomina = 2000 + (Math.random() * (3000 - 2000));
+					
+					importeNomina = Math.round(importeNomina * 100.0) / 100.0;
 
 					fichero.write(digitoEntero + ";" + importeNomina + "\n");
 
@@ -70,7 +62,10 @@ public class GeneracionFicheroTransferencia {
 				}
 				fichero.close();
 				
-				p1.waitFor();
+				
+
+				
+		
 				
 				System.out.println("Fichero generado con éxito.");
 				System.exit(0);

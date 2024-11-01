@@ -38,7 +38,7 @@ public class GeneracionFicheroTransferencia {
 	            System.out.println("Numero de transferencias: " + numeroTransferencias);
 				
 				reader.close();
-
+				//meter en un metodo todolo lo despues a lectura de datos
 				FileWriter fichero = new FileWriter(pathFichero + "" + nombreFichero);
 
 				for (int i = 0; i < numeroTransferencias; i++) {
@@ -51,11 +51,11 @@ public class GeneracionFicheroTransferencia {
 
 					int digitoEntero = primerDigito + restantes;
 
-					double importeNomina = 2000 + (Math.random() * (3000 - 2000));
+					double importeNomina = 1500 + (Math.random() * (3000 - 1500));
 					
 					importeNomina = Math.round(importeNomina * 100.0) / 100.0;
 
-					fichero.write(digitoEntero + ";" + importeNomina + "\n");
+					fichero.write(digitoEntero + "," + importeNomina + "\n");
 
 					
 
